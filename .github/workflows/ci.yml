@@ -32,7 +32,7 @@ jobs:
           components: rustfmt
       - name: "rustfmt"
         run: grep -r --include "*.rs" --files-without-match "@generated" crates | xargs rustfmt --check --config="skip_children=true"
-        working-directory: ./lsp/
+        working-directory: lsp
 
   build-compiler:
     name: Build Rust Compiler (${{ matrix.target.os }})
