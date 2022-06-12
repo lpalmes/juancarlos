@@ -9,7 +9,6 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
-    working-directory: lsp
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
@@ -19,20 +18,8 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
-
-  rust-lint:
-    name: Rust Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly-2022-04-01
-          override: true
-          components: rustfmt
-      - name: "rustfmt"
-        run: grep -r --include "*.rs" --files-without-match "@generated" crates | xargs rustfmt --check --config="skip_children=true"
-        working-directory: lsp
+          # add --locked back when we have a better way to ensure it's up to date
+          args: --manifest-path=lsp/Cargo.toml
 
   build-compiler:
     name: Build Rust Compiler (${{ matrix.target.os }})
