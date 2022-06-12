@@ -1,5 +1,5 @@
 {
-  "name": "Juan Carlos",
+  "name": "juan-carlos",
   "displayName": "helloworld-sample",
   "description": "HelloWorld example for VS Code",
   "version": "0.0.1",
@@ -8,13 +8,8 @@
   "engines": {
     "vscode": "^1.32.0"
   },
-  "activationEvents": [
-    "onLanguage:html",
-    "onLanguage:css"
-  ],
-  "categories": [
-    "Other"
-  ],
+  "activationEvents": ["onLanguage:html", "onLanguage:css"],
+  "categories": ["Other"],
   "main": "./out/extension.js",
   "scripts": {
     "vscode:prepublish": "npm run compile",
