@@ -88,7 +88,6 @@ jobs:
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
-          cache: "yarn"
       - name: Install dependencies
         run: yarn install --frozen-lockfile --ignore-scripts
       - name: Download artifact juan-carlos-bin-linux-x64
