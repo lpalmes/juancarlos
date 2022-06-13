@@ -33,7 +33,7 @@ const rustPackage = gulp.parallel(
       .src("**", {
         cwd: path.join("artifacts"),
       })
-      .pipe(gulp.dest(path.join(DIST, "relay-compiler")));
+      .pipe(gulp.dest(path.join(DIST, "juan-carlos")));
   }
 );
 

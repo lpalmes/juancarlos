@@ -72,7 +72,7 @@ export function activate(context: vscode.ExtensionContext) {
       closed() {
         vscode.window
           .showWarningMessage(
-            "Relay LSP client connection got closed unexpectedly.",
+            "Juan Carlos LSP client connection got closed unexpectedly.",
             "Go to output",
             "Ignore"
           )
@@ -88,7 +88,7 @@ export function activate(context: vscode.ExtensionContext) {
       error() {
         vscode.window
           .showWarningMessage(
-            "An error occurred while writing/reading to/from the relay lsp connection",
+            "An error occurred while writing/reading to/from the juan-carlos lsp connection",
             "Go to output",
             "Ignore"
           )
@@ -118,7 +118,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   lspOutputChannel.appendLine(
-    `Starting the Relay Langauge Server with these options: ${JSON.stringify(
+    `Starting the Juan Carlos Langauge Server with these options: ${JSON.stringify(
       serverOptions
     )}`
   );
