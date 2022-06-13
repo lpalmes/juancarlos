@@ -1,0 +1,12 @@
+{
+  "name": "juan-carlos",
+  "description": "Hola Juan carlos, como estas? soy el espiritu",
+  "version": "14.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lpalmes/juancarlos.git"
+  },
+  "main": "index.js",
+  "bin": "cli.js"
+}

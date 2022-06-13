@@ -31,12 +31,10 @@ jobs:
             build-name: juan-carlos
             artifact-name: juan-carlos-bin-linux-x64
             packages: musl-tools
-            features: vendored
           - target: aarch64-unknown-linux-musl
             os: ubuntu-latest
             build-name: juan-carlos
             artifact-name: juan-carlos-bin-linux-arm64
-            features: vendored
             cross: true
           - target: x86_64-apple-darwin
             os: macos-latest
