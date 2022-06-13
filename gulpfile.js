@@ -37,6 +37,39 @@ const rustPackage = gulp.parallel(
   }
 );
 
+/**
+ * Updates the package.json files `/dist/` with a version to release to npm under
+ * the main tag.
+ */
+const setMainVersion = async () => {
+  if (!RELEASE_COMMIT_SHA) {
+    throw new Error("Expected the RELEASE_COMMIT_SHA env variable to be set.");
+  }
+  const packages = ["juan-carlos"];
+  packages.forEach((pkg) => {
+    const pkgJsonPath = path.join(".", "dist", pkg, "package.json");
+    const packageJson = JSON.parse(fs.readFileSync(pkgJsonPath, "utf8"));
+    packageJson.version = VERSION;
+    for (const depKind of [
+      "dependencies",
+      "devDependencies",
+      "peerDependencies",
+    ]) {
+      const deps = packageJson[depKind];
+      for (const dep in deps) {
+        if (packages.includes(dep)) {
+          deps[dep] = VERSION;
+        }
+      }
+    }
+    fs.writeFileSync(
+      pkgJsonPath,
+      JSON.stringify(packageJson, null, 2) + "\n",
+      "utf8"
+    );
+  });
+};
+
 async function setCompilerMainVersion() {
   if (!RELEASE_COMMIT_SHA) {
     throw new Error("Expected the RELEASE_COMMIT_SHA env variable to be set.");
@@ -54,7 +87,7 @@ async function setCompilerMainVersion() {
 const cleanbuild = gulp.series(clean);
 
 exports.clean = clean;
-exports.mainrelease = gulp.series(cleanbuild, rustPacakge, setMainVersion);
+exports.mainrelease = gulp.series(cleanbuild, rustPackage, setMainVersion);
 exports.release = gulp.series(cleanbuild, rustPackage);
 exports.cleanbuild = cleanbuild;
 exports.default = cleanbuild;
